@@ -68,17 +68,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mamamind.wsgi.application'
 
-# Database configuration for PostgreSQL
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB_NAME', 'your_db_name'), 
-        'USER': os.environ.get('POSTGRES_DB_USERNAME', 'your_db_user'),  
-        'PASSWORD': os.environ.get('POSTGRES_DB_PASSWORD', 'your_db_password'),
-        'HOST': os.environ.get('POSTGRES_DB_HOST', 'localhost'), 
-        'PORT': os.environ.get('POSTGRES_DB_PORT', '5432'), 
+# Database configuration for PostgreSQL or SQLite
+if os.environ.get('USE_SQLITE', 'True') == 'True':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('POSTGRES_DB_NAME', 'your_db_name'), 
+            'USER': os.environ.get('POSTGRES_DB_USERNAME', 'your_db_user'),  
+            'PASSWORD': os.environ.get('POSTGRES_DB_PASSWORD', 'your_db_password'),
+            'HOST': os.environ.get('POSTGRES_DB_HOST', 'localhost'), 
+            'PORT': os.environ.get('POSTGRES_DB_PORT', '5432'), 
+        }
+    }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [

@@ -8,7 +8,6 @@ MamáMind is a WhatsApp-based chatbot designed to support pregnant women with pe
 **Platform**: WhatsApp Chatbot  
 **Target Audience**: Pregnant women seeking accessible, personalized nutrition support
 
-### Video Demo: https://vimeo.com/1088501818
 
 ## Features
 - **Personalized Onboarding**: Collects user profile details (trimester, dietary preferences, allergies, cultural preferences, pregnancy conditions) via text input to tailor the experience.
